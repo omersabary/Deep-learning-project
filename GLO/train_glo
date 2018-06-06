@@ -1,0 +1,280 @@
+
+import numpy as np
+from PIL import Image
+from tqdm import tqdm
+import os
+import time
+import h5py
+import torch
+from torch import nn
+import torch.nn.functional as fnn
+from torch.autograd import Variable
+from torch.optim import SGD
+from torchvision.datasets import LSUN
+from torchvision.datasets import CIFAR10
+from torchvision.datasets import MNIST
+from torchvision.datasets import SVHN
+from torchvision import transforms
+from torch.utils.data import Dataset
+from torchvision.utils import make_grid
+
+
+
+
+class Trainer(object):
+
+    def __init__(self,
+                 config,
+                 dataset_train,
+                 ):
+        self.config = config
+        hyper_parameter_str = config.dataset+'_lr_'+str(config.learning_rate)
+        self.train_dir = './train_dir/%s-%s-%s' % (
+            config.prefix,
+            hyper_parameter_str,
+            time.strftime("%Y%m%d-%H%M%S")
+        )
+
+        if not os.path.exists(self.train_dir):
+            os.makedirs(self.train_dir)
+
+        # --- input ops ---
+        self.batch_size = config.batch_size
+        self.use_cuda = config.use_cuda
+
+        # --- optimizer ---
+        self.learning_rate = config.learning_rate
+
+        train_loader = torch.utils.data.DataLoader(
+            dataset_train, batch_size=self.batch_size,
+            shuffle=True, drop_last=True,
+            num_workers=8, pin_memory=self.use_cuda,
+        )
+
+
+        # initialize Latent space:
+        self.n_pca = config.n_pca
+        self.dim = config.dim
+        if config.init == 'pca':
+            from sklearn.decomposition import PCA
+
+            # first, take a subset of train set to fit the PCA
+            X_pca = np.vstack([
+                X.cpu().numpy().reshape(len(X), -1)
+                for i, (X, _, _)
+                in zip(tqdm(range(self.n_pca // train_loader.batch_size), 'collect data for PCA'),
+                       train_loader)
+            ])
+            print("perform PCA...")
+            pca = PCA(n_components=self.dim)
+            pca.fit(X_pca)
+            # then, initialize latent vectors to the pca projections of the complete dataset
+            Z = np.empty((len(train_loader.dataset), code_dim))
+            for X, _, idx in tqdm(train_loader, 'pca projection'):
+                Z[idx] = pca.transform(X.cpu().numpy().reshape(len(X), -1))
+
+        elif config.init == 'random':
+            Z = np.random.randn(len(dataset_train), self.dim)
+
+        Z = project_l2_ball(Z)
+
+
+        g = maybe_cuda(Generator(code_dim))
+        loss_fn = LapLoss(max_levels=3) if loss == 'lap_l1' else nn.MSELoss()
+        zi = maybe_cuda(torch.zeros((batch_size, code_dim)))
+        zi = Variable(zi, requires_grad=True)
+        optimizer = SGD([
+            {'params': g.parameters(), 'lr': lr_g},
+            {'params': zi, 'lr': lr_z}
+        ])
+
+
+        # --- checkpoint and monitoring ---
+        log.warn("********* var ********** ")
+        slim.model_analyzer.analyze_vars(tf.trainable_variables(), print_info=True)
+
+        self.g_optimizer = tf.contrib.layers.optimize_loss(
+            loss=self.model.loss,
+            global_step=self.global_step,
+            learning_rate=self.learning_rate,
+            optimizer=tf.train.AdamOptimizer,
+            clip_gradients=20.0,
+            name='g_optimizer_loss',
+        )
+
+        self.summary_op = tf.summary.merge_all()
+
+        self.saver = tf.train.Saver(max_to_keep=1000)
+        self.summary_writer = tf.summary.FileWriter(self.train_dir)
+
+        self.checkpoint_secs = 600  # 10 min
+
+        self.supervisor = tf.train.Supervisor(
+            logdir=self.train_dir,
+            is_chief=True,
+            saver=None,
+            summary_op=None,
+            summary_writer=self.summary_writer,
+            save_summaries_secs=300,
+            save_model_secs=self.checkpoint_secs,
+            global_step=self.global_step,
+        )
+
+        session_config = tf.ConfigProto(
+            allow_soft_placement=True,
+            gpu_options=tf.GPUOptions(allow_growth=True),
+            device_count={'GPU': 1},
+        )
+        self.session = self.supervisor.prepare_or_wait_for_session(config=session_config)
+
+        self.ckpt_path = config.checkpoint
+        if self.ckpt_path is not None:
+            log.info("Checkpoint path: %s", self.ckpt_path)
+            self.saver.restore(self.session, self.ckpt_path)
+            log.info("Loaded the pretrain parameters from the provided checkpoint path")
+
+
+
+    def train(self, dataset):
+        log.infov("Training Starts!")
+        max_steps = 100000
+
+        output_save_step = 1000
+
+        for s in xrange(max_steps):
+            step, summary, x, loss, loss_g_update, loss_z_update, step_time = \
+                self.run_single_step(self.batch_train, dataset, step=s, is_train=True)
+
+            if s % 10 == 0:
+                self.log_step_message(step, loss, loss_g_update, loss_z_update, step_time)
+
+            self.summary_writer.add_summary(summary, global_step=step)
+
+            if s % output_save_step == 0:
+                log.infov("Saved checkpoint at %d", s)
+                save_path = self.saver.save(self.session,
+                                            os.path.join(self.train_dir, 'model'),
+                                            global_step=step)
+                if self.config.dump_result:
+                    f = h5py.File(os.path.join(self.train_dir, 'dump_result_'+str(s)+'.hdf5'), 'w')
+                    f['image'] = x
+                    f.close()
+
+    def run_single_step(self, batch, dataset, step=None, is_train=True):
+        _start_time = time.time()
+
+        batch_chunk = self.session.run(batch)
+
+        # Optmize the generator {{{
+        # ========
+        fetch = [self.global_step, self.summary_op, self.model.loss,
+                 self.model.x_recon, self.check_op, self.g_optimizer]
+
+        fetch_values = self.session.run(
+            fetch, feed_dict=self.model.get_feed_dict(batch_chunk, step=step)
+        )
+        [step, summary, loss, x] = fetch_values[:4]
+        # }}}
+
+        # Optimize the latent vectors {{{
+        fetch = [self.model.z, self.model.z_grad, self.model.loss]
+
+        fetch_values = self.session.run(
+            fetch, feed_dict=self.model.get_feed_dict(batch_chunk, step=step)
+        )
+
+        [z, z_grad, loss_g_update] = fetch_values
+
+        z_update = z - self.config.alpha * z_grad[0]
+        norm = np.sqrt(np.sum(z_update ** 2, axis=1))
+        z_update_norm = z_update / norm[:, np.newaxis]
+
+        loss_z_update = self.session.run(
+            self.model.loss, feed_dict={self.model.x: batch_chunk['image'], self.model.z: z_update_norm}
+        )
+        for i in range(len(batch_chunk['id'])):
+            dataset.set_data(batch_chunk['id'][i], z_update_norm[i, :])
+        # }}}
+
+        _end_time = time.time()
+
+        return step, summary, x, loss, loss_g_update, loss_z_update, (_end_time - _start_time)
+
+
+
+
+
+
+
+
+
+
+def get_train_data(data_set)
+
+    if data_set == 'LSUN'
+        train_set = LSUN('./data_set/lsun/', classes=['bedroom_train'],
+                 transform=transforms.Compose([
+                     transforms.Resize(64),
+                     transforms.CenterCrop(64),
+                     transforms.ToTensor(),
+                     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
+                 ]))
+
+    elif data_set == 'MNIST':
+        train_set = MNIST('./data_set/mnist/', train=True, download=True,
+                 transform=transforms.Compose([
+                     transforms.Resize(64),
+                     transforms.CenterCrop(64),
+                     transforms.ToTensor(),
+                     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
+                 ]))
+
+    elif data_set == 'CIFAR10':
+        train_set = CIFAR10('./data_set/cifar/', train=True, download=True,
+                 transform=transforms.Compose([
+                     transforms.Resize(64),
+                     transforms.CenterCrop(64),
+                     transforms.ToTensor(),
+                     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
+                 ]))
+    else:
+        raise ValueError(data_set()
+    return train_set
+
+
+def main():
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--batch_size', type=int, default=16)
+    parser.add_argument('--epochs',type=int,default=25)
+ #   parser.add_argument('--prefix', type=str, default='default')
+ #   parser.add_argument('--checkpoint', type=str, default=None)
+    parser.add_argument('--dim',type=int,default=128)
+    parser.add_argument('--dataset', type=str, default='LSUN', choices=['MNIST', 'SVHN', 'CIFAR10', 'LSUN'])
+    parser.add_argument('--use_cuda', default=False)
+    parser.add_argument('--lr_g', type=float, default=1)
+    parser.add_argument('--lr_z', type=float, default=10.0)
+ #   parser.add_argument('--lr_weight_decay', action='store_true', default=False)
+ #   parser.add_argument('--dump_result', action='store_true', default=False)
+    parser.add_argument('--init',type=str, default='pca', choices=['pca', 'random'])
+    parser.add_argument('--loss',type=str,default='lap_l1',choices=['lap_l1', 'l2'])
+    parser.add_argument('--n_pca',type=int,default=64*64*3*2) #number of samples to take for PCA
+
+
+ #   config.conv_info = dataset.get_conv_info()
+ #   config.deconv_info = dataset.get_deconv_info()
+  #  dataset_train, dataset_test = dataset.create_default_splits()
+
+#    m, l = dataset_train.get_data(dataset_train.ids[0])
+    dataset_train = get_train_data(config.dataset)
+    trainer = Trainer(config,
+                      dataset_train, dataset_test)
+
+    trainer.train(dataset_train)
+
+
+
+
+
+if __name__ == '__main__':
+    main()
