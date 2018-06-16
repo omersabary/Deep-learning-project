@@ -7,6 +7,7 @@ import time
 import h5py
 import torch
 from torch import nn
+import generator
 import torch.nn.functional as fnn
 from torch.autograd import Variable
 from torch.optim import SGD
@@ -18,6 +19,10 @@ from torchvision import transforms
 from torch.utils.data import Dataset
 from torchvision.utils import make_grid
 
+
+def project_l2_ball(z):
+    """ project the vectors in z onto the l2 unit norm ball"""
+    return z / np.maximum(np.sqrt(np.sum(z ** 2, axis=1))[:, np.newaxis], 1)
 
 
 
@@ -59,7 +64,7 @@ class Trainer(object):
             from sklearn.decomposition import PCA
 
             # first, take a subset of train set to fit the PCA
-            X_pca = np.vstack([
+            x_pca = np.vstack([
                 X.cpu().numpy().reshape(len(X), -1)
                 for i, (X, _, _)
                 in zip(tqdm(range(self.n_pca // train_loader.batch_size), 'collect data for PCA'),
@@ -67,25 +72,33 @@ class Trainer(object):
             ])
             print("perform PCA...")
             pca = PCA(n_components=self.dim)
-            pca.fit(X_pca)
+            pca.fit(x_pca)
             # then, initialize latent vectors to the pca projections of the complete dataset
-            Z = np.empty((len(train_loader.dataset), code_dim))
+            z = np.empty((len(train_loader.dataset), self.dim))
             for X, _, idx in tqdm(train_loader, 'pca projection'):
-                Z[idx] = pca.transform(X.cpu().numpy().reshape(len(X), -1))
+                z[idx] = pca.transform(X.cpu().numpy().reshape(len(X), -1))
 
         elif config.init == 'random':
-            Z = np.random.randn(len(dataset_train), self.dim)
+            z = np.random.randn(len(dataset_train), self.dim)
 
-        Z = project_l2_ball(Z)
+        #project to l2 ball
+        z = project_l2_ball(z)
 
+        #CUDA?
+        g = generator.Generator(self.dim)
+        zi = torch.zeros((self.batch_size, self.dim))
+        if config.use_cuda:
+            g=g.cuda()
+            zi = zi.cuda()
 
-        g = maybe_cuda(Generator(code_dim))
+        #LOSS
         loss_fn = LapLoss(max_levels=3) if loss == 'lap_l1' else nn.MSELoss()
-        zi = maybe_cuda(torch.zeros((batch_size, code_dim)))
+
+        #optimizer
         zi = Variable(zi, requires_grad=True)
         optimizer = SGD([
-            {'params': g.parameters(), 'lr': lr_g},
-            {'params': zi, 'lr': lr_z}
+            {'params': g.parameters(), 'lr': config.lr_g},
+            {'params': zi, 'lr': config.lr_z}
         ])
 
 
@@ -136,7 +149,7 @@ class Trainer(object):
 
 
     def train(self, dataset):
-        log.infov("Training Starts!")
+        print("Training Starts!")
         max_steps = 100000
 
         output_save_step = 1000
@@ -151,8 +164,8 @@ class Trainer(object):
             self.summary_writer.add_summary(summary, global_step=step)
 
             if s % output_save_step == 0:
-                log.infov("Saved checkpoint at %d", s)
-                save_path = self.saver.save(self.session,
+                print("Saved checkpoint at %d", s)
+                self.saver.save(self.session,
                                             os.path.join(self.train_dir, 'model'),
                                             global_step=step)
                 if self.config.dump_result:

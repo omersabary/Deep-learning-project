@@ -167,7 +167,7 @@ class Evaler(object):
             img1, z1 = dataset.get_data(dataset.ids[idx])
             img2, z2 = dataset.get_data(dataset.ids[idx+1])
             z = []
-            for j in range(transit_num):
+            for j in range(a):
                 z_int = (z2 - z1) * (j+1) / (transit_num+1) + z1
                 z.append(z_int / np.linalg.norm(z_int))
             z = np.stack(z, axis=0)

@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc56ec98-4f6e-464d-89ad-ddc69349ef4e" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Deep Learning Project.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GLO/train_glo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GLO/a.py" beforeDir="false" afterPath="$PROJECT_DIR$/GLO/Generator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GLO/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GLO/laploss.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GLO/util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Deep Learning Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Deep Learning Project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GLO/Generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/GLO/generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GLO/glo.py" beforeDir="false" afterPath="$PROJECT_DIR$/GLO/glo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GLO/train_glo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/evaler.py" beforeDir="false" afterPath="$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/evaler.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,24 +24,8 @@
       <file leaf-file-name="trainer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/trainer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="util.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/util.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-44" />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cifar10.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/datasets/cifar10.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-809">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="45">
+              <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -46,23 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="download.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/download.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1290">
-              <caret line="86" column="25" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="glo.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="glo.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GLO/glo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="176" column="20" selection-start-line="176" selection-start-column="13" selection-end-line="176" selection-end-column="20" />
+            <state relative-caret-position="329">
+              <caret line="122" column="54" selection-start-line="122" selection-start-column="42" selection-end-line="122" selection-end-column="54" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -70,25 +45,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Generator.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GLO/Generator.py">
+      <file leaf-file-name="generator.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GLO/generator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-              <folding>
-                <element signature="e#4#16#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="210">
+              <caret line="14" column="25" selection-end-line="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="train_glo" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/GLO/train_glo">
+      <file leaf-file-name="laploss.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GLO/laploss.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
+            <state relative-caret-position="599">
+              <caret line="47" column="27" lean-forward="true" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="util.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GLO/util.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
               <folding>
-                <element signature="e#1#19#0" expanded="true" />
+                <element signature="e#2#20#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -97,8 +78,20 @@
       <file leaf-file-name="evaler.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/evaler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-175">
-              <caret line="87" column="50" selection-start-line="87" selection-start-column="46" selection-end-line="87" selection-end-column="50" />
+            <state relative-caret-position="2205">
+              <caret line="162" column="29" selection-start-line="162" selection-start-column="29" selection-end-line="162" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="model.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1095">
+              <caret line="78" column="63" selection-start-line="78" selection-start-column="56" selection-end-line="78" selection-end-column="63" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -134,6 +127,16 @@
       <find>sklearn</find>
       <find>test</find>
       <find>h5py</find>
+      <find>urllib2</find>
+      <find>idx</find>
+      <find>set</find>
+      <find>tf</find>
+      <find>maybe</find>
+      <find>Lap</find>
+      <find>utils</find>
+      <find>util</find>
+      <find>cuda</find>
+      <find>ebuild</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -145,8 +148,17 @@
         <option value="$PROJECT_DIR$/a.py" />
         <option value="$PROJECT_DIR$/GLO/a.py" />
         <option value="$PROJECT_DIR$/GLO/Generator.py" />
-        <option value="$PROJECT_DIR$/GLO/glo.py" />
+        <option value="$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/trainer.py" />
         <option value="$PROJECT_DIR$/GLO/train_glo" />
+        <option value="$PROJECT_DIR$/lsun-master/download.py" />
+        <option value="$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/evaler.py" />
+        <option value="$PROJECT_DIR$/GLO/lap_loss.py" />
+        <option value="$PROJECT_DIR$/GLO/utils.py" />
+        <option value="$PROJECT_DIR$/GLO/LapLoss.py" />
+        <option value="$PROJECT_DIR$/GLO/generator.py" />
+        <option value="$PROJECT_DIR$/GLO/__init__.py" />
+        <option value="$PROJECT_DIR$/GLO/glo.py" />
+        <option value="$PROJECT_DIR$/GLO/laploss.py" />
       </list>
     </option>
   </component>
@@ -164,13 +176,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="Deep Learning Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Deep Learning Project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Deep Learning Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Deep Learning Project" type="462c0819:PsiDirectoryNode" />
+              <item name="Fast Style Transfer" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Deep Learning Project" type="b2602c69:ProjectViewProjectNode" />
@@ -186,16 +202,28 @@
             <path>
               <item name="Deep Learning Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Deep Learning Project" type="462c0819:PsiDirectoryNode" />
+              <item name="Generative-Latent-Optimization-Tensorflow-master" type="462c0819:PsiDirectoryNode" />
+              <item name="figure" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Deep Learning Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Deep Learning Project" type="462c0819:PsiDirectoryNode" />
               <item name="GLO" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -209,7 +237,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.glo">
+    <configuration name="download" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Deep Learning Project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lsun-master" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lsun-master/download.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="glo" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Deep Learning Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -228,9 +274,14 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <list>
+      <item itemvalue="Python.glo" />
+      <item itemvalue="Python.download" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.glo" />
+        <item itemvalue="Python.download" />
       </list>
     </recent_temporary>
   </component>
@@ -253,14 +304,14 @@
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32912722" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5005208" side_tool="true" weight="0.32912722" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49947917" weight="0.32912722" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32912722" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4984375" weight="0.32912722" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -269,122 +320,69 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49947917" visible="true" weight="0.32912722" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4984375" weight="0.32912722" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5005208" side_tool="true" visible="true" weight="0.32912722" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Python Console" order="7" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/GLO/a.py">
+    <entry file="file://$PROJECT_DIR$/GLO/util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Fast style transfer/neural_style/neural_style.py" />
-    <entry file="file://$PROJECT_DIR$/GLO/a.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/datasets/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/visualize_training.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="345">
+          <caret line="25" column="26" lean-forward="true" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/datasets/mnist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-646">
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/cleaner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/input_ops.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="58" column="75" selection-start-line="58" selection-start-column="68" selection-end-line="58" selection-end-column="75" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1199">
-          <caret line="117" column="34" selection-start-line="117" selection-start-column="25" selection-end-line="117" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/datasets/svhn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-540">
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#2#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/evaler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-175">
-          <caret line="87" column="50" selection-start-line="87" selection-start-column="46" selection-end-line="87" selection-end-column="50" />
+        <state relative-caret-position="2205">
+          <caret line="162" column="29" selection-start-line="162" selection-start-column="29" selection-end-line="162" selection-end-column="29" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/datasets/cifar10.py">
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-809">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="1095">
+          <caret line="78" column="63" selection-start-line="78" selection-start-column="56" selection-end-line="78" selection-end-column="63" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/download.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1290">
-          <caret line="86" column="25" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GLO/glo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="176" column="20" selection-start-line="176" selection-start-column="13" selection-end-line="176" selection-end-column="20" />
+        <state relative-caret-position="105">
+          <caret line="7" column="18" lean-forward="true" selection-end-line="152" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
@@ -393,35 +391,338 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/trainer.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1680">
+          <caret line="129" column="41" selection-start-line="129" selection-start-column="41" selection-end-line="129" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Fast Style Transfer/neural_style/neural_style.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1095">
+          <caret line="78" column="63" selection-start-line="78" selection-start-column="56" selection-end-line="78" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/datasets/cifar10.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="46" column="24" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/evaler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2400">
+          <caret line="175" column="63" selection-start-line="175" selection-start-column="63" selection-end-line="175" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GLO/glo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3135">
+          <caret line="223" column="35" lean-forward="true" selection-start-line="223" selection-start-column="35" selection-end-line="223" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/trainer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2250">
+          <caret line="167" column="38" selection-start-line="167" selection-start-column="27" selection-end-line="167" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1095">
+          <caret line="78" column="63" selection-start-line="78" selection-start-column="56" selection-end-line="78" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/datasets/cifar10.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="46" column="24" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/evaler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2400">
+          <caret line="175" column="63" lean-forward="true" selection-start-line="175" selection-start-column="63" selection-end-line="175" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GLO/glo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3330">
+          <caret line="236" column="63" selection-start-line="236" selection-start-column="56" selection-end-line="236" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/trainer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2115">
+          <caret line="158" column="41" selection-start-line="158" selection-start-column="41" selection-end-line="158" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/input_ops.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="58" column="75" selection-start-line="58" selection-start-column="68" selection-end-line="58" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1680">
+          <caret line="117" column="34" selection-start-line="117" selection-start-column="25" selection-end-line="117" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/datasets/cifar10.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/download.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1185">
+          <caret line="86" column="25" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GLO/generator.py" />
+    <entry file="file://$PROJECT_DIR$/../Deep learning HW/1/pytorch-cifar-master/venv/lib/python3.6/site-packages/torch/nn/modules/module.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1065">
+          <caret line="78" column="37" selection-start-line="78" selection-end-line="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GLO/train_glo" />
+    <entry file="file://$PROJECT_DIR$/GLO/glo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2940">
+          <caret line="210" lean-forward="true" selection-start-line="210" selection-end-line="210" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/trainer.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/util.py">
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/datasets/cifar10.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-44" />
+        <state relative-caret-position="15">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GLO/Generator.py">
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/download.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1185">
+          <caret line="86" column="25" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GLO/glo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2430">
+          <caret line="176" column="20" selection-start-line="176" selection-start-column="13" selection-end-line="176" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GLO/generator.py" />
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/evaler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="87" column="50" selection-start-line="87" selection-start-column="46" selection-end-line="87" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GLO/train_glo" />
+    <entry file="file://$PROJECT_DIR$/GLO/a.py" />
+    <entry file="file://$PROJECT_DIR$/Fast style transfer/neural_style/neural_style.py" />
+    <entry file="file://$PROJECT_DIR$/GLO/a.py" />
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/datasets/mnist.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-646" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/datasets/svhn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-540" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/input_ops.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="58" column="75" selection-start-line="58" selection-start-column="68" selection-end-line="58" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GLO/train_glo" />
+    <entry file="file://$PROJECT_DIR$/../Deep learning HW/1/pytorch-cifar-master/venv/lib/python3.6/site-packages/torch/nn/modules/module.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="78" column="37" selection-start-line="78" selection-end-line="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lsun-master/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-360" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/download.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="556">
+          <caret line="86" column="25" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lsun-master/download.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="40" column="30" lean-forward="true" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/datasets/cifar10.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="46" column="24" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Fast Style Transfer/neural_style/neural_style.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1095">
+          <caret line="78" column="63" selection-start-line="78" selection-start-column="56" selection-end-line="78" selection-end-column="63" />
           <folding>
-            <element signature="e#4#16#0" expanded="true" />
+            <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GLO/train_glo">
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/evaler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2205">
+          <caret line="162" column="29" selection-start-line="162" selection-start-column="29" selection-end-line="162" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Generative-Latent-Optimization-Tensorflow-master/trainer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GLO/generator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
-          <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
+          <caret line="14" column="25" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GLO/util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
           <folding>
-            <element signature="e#1#19#0" expanded="true" />
+            <element signature="e#2#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/GLO/laploss.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="599">
+          <caret line="47" column="27" lean-forward="true" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GLO/glo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="122" column="54" selection-start-line="122" selection-start-column="42" selection-end-line="122" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
